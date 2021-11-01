@@ -3,9 +3,12 @@ const path = require('path');
 const router = require('./routes/rutas.js')
 const database = require('./dbConfig/database.js');
 
+require('dotenv').config({ path: '.env' })
 
 const app = express();
-const port = 8080;
+const host = process.env.Host || '0.0.0.0';
+const port = process.env.Port || 3000;
+
 database.configDatabase();
 
 app.set('views', './views');
@@ -18,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
-app.listen(port, (req, res) => {
+app.listen(port, host, (req, res) => {
     console.log(`Listening on http://localhost:${port}`);
 });
 
