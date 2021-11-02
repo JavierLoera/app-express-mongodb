@@ -25,13 +25,7 @@ router.post('/guardar',
 router.get('/eliminar/:id', eliminarContacto);
 router.get('/editar/:id', actualizarContacto);
 
-router.post('/editar/:id', body('nombre', "Ingrese un valor").exists(),
-    body('numero', "Ingrese un número con almenos 8 caracteres y maximo 12")
-    .isLength({ min: 8, max: 12 }).isNumeric(),
-    body('direccion',
-        "ingrese una direccion correcta con al menos 20 caracteres").exists().isLength({ min: 20, max: 50 }),
-    body('email', "Ingrese un e-mail valido")
-    .isEmail(), editarContacto)
+router.post('/editar/:id', editarContacto)
 
 
 module.exports = router;

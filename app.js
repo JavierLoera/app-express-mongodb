@@ -2,10 +2,15 @@ const express = require("express");
 const path = require('path');
 const router = require('./routes/rutas.js')
 const database = require('./dbConfig/database.js');
+const dotenv = require('dotenv');
 
-require('dotenv').config({ path: '.env' })
+
 
 const app = express();
+
+dotenv.config()
+
+
 const host = process.env.Host || '0.0.0.0';
 const port = process.env.Port || 3000;
 
