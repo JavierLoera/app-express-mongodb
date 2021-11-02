@@ -4,15 +4,11 @@ const router = require('./routes/rutas.js')
 const database = require('./dbConfig/database.js');
 const dotenv = require('dotenv');
 
-
-
 const app = express();
 
 dotenv.config()
 
-
-const host = process.env.Host || '0.0.0.0';
-const port = process.env.Port || 3000;
+const port = process.env.PORT || 5000
 
 database.configDatabase();
 
@@ -26,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
-app.listen(port, host, (req, res) => {
+app.listen(port, (req, res) => {
     console.log(`Listening on http://localhost:${port}`);
 });
 
